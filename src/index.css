@@ -1,9 +1,9 @@
 @import "tailwindcss";
 body {
-  background: url(../public/bg.avif);
-  background-size: cover;
+  /* background: url(../public/bg.avif); */
+  /* background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
