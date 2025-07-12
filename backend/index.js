@@ -17,7 +17,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json()); 
 app.use(cookieParser());
 const corsOption={
-    origin:['whatsapp-clone-ndo61r27w-ahsans-codes-projects.vercel.app','http://localhost:5173',"https://whatsapp-clone-black-theta.vercel.app/"],
+    origin:['whatsapp-clone-ndo61r27w-ahsans-codes-projects.vercel.app','http://localhost:5173',"https://whatsapp-clone-black-theta.vercel.app"],
     credentials:true
 };
 app.use(cors(corsOption)); 
