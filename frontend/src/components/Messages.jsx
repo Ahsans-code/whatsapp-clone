@@ -36,10 +36,10 @@ const Messages = () => {
     useGetMessages();
     useGetRealTimeMessage();
     const { messages } = useSelector(store => store.message);
-
+console.log(messages,"messages")
     return (
-        <div className='px-4 flex-1 overflow-auto' 
-        // style={{ backgroundImage: `url(${chatBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+        <div className='px-4 flex-1 overflow-auto ' 
+        
         >
             {
                 messages && messages?.map((message) => {

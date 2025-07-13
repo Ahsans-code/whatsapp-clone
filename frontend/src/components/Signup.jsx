@@ -49,7 +49,7 @@ const Signup = () => {
   return (
     <div className='h-screen flex flex-col w-full'>
       {/* Top green banner */}
-      {/* <div className='h-[25vh] bg-[#00a884]'></div> */}
+      {/* <div className='h-[25vh] bg-primary'></div> */}
 
       {/* Main content area */}
       <div className=' bg-[#eae6df] flex justify-center items-start py-10 w-full'>
@@ -63,7 +63,7 @@ const Signup = () => {
               <input
                 value={user.fullName}
                 onChange={(e) => setUser({ ...user, fullName: e.target.value })}
-                className='w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00a884]'
+                className='w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary'
                 type="text"
                 placeholder='Enter your full name' />
             </div>
@@ -75,7 +75,7 @@ const Signup = () => {
               <input
                 value={user.username}
                 onChange={(e) => setUser({ ...user, username: e.target.value })}
-                className='w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00a884]'
+                className='w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary'
                 type="text"
                 placeholder='Enter a username' />
             </div>
@@ -87,7 +87,7 @@ const Signup = () => {
               <input
                 value={user.password}
                 onChange={(e) => setUser({ ...user, password: e.target.value })}
-                className='w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00a884]'
+                className='w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary'
                 type="password"
                 placeholder='Enter a password' />
             </div>
@@ -99,7 +99,7 @@ const Signup = () => {
               <input
                 value={user.confirmPassword}
                 onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })}
-                className='w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00a884]'
+                className='w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary'
                 type="password"
                 placeholder='Confirm your password' />
             </div>
@@ -130,11 +130,11 @@ const Signup = () => {
             </div>
 
             <div className='mt-6'>
-              <button type='submit' className='btn w-full bg-[#00a884] text-white h-12 text-lg hover:bg-[#008a6b]'>Sign Up</button>
+              <button type='submit' className='btn w-full bg-primary text-white h-12 text-lg hover:bg-[#008a6b]'>Sign Up</button>
             </div>
             
             <p className='text-center text-sm text-gray-600 my-4'>
-              Already have an account? <Link to="/login" className='text-[#00a884] hover:underline'>Login</Link>
+              Already have an account? <Link to="/login" className='text-primary hover:underline'>Login</Link>
             </p>
           </form>
         </div>

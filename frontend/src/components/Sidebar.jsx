@@ -106,14 +106,15 @@ const Sidebar = () => {
     }
 console.log(authUser)
     return (
-        <div className='w-[30%] border-r border-slate-700 bg-[#111B21] text-white flex flex-col'>
+        <div className='w-[30%] border-r border-bgSecondary bg-blackBg text-white flex flex-col'>
             {/* Header */}
-            <div className='flex items-center justify-between bg-[#202C33] h-[60px] p-3'>
-                <div className="avatar">
+            <div className='flex items-center justify-between  h-[60px] p-3'>
+                {/* <div className="avatar">
                     <div className="w-10 rounded-full">
                         <img src={authUser?.profilePhoto} alt="user-profile" />
                     </div>
-                </div>
+                </div> */}
+                <h2 className='text-xl font-semibold'>WhatsApp</h2>
                 <div className='flex items-center'>
                     <button onClick={logoutHandler} className='p-2 rounded-full hover:bg-[#374248]'>
                         <FiLogOut className='w-6 h-6' title='Logout' />
@@ -122,15 +123,15 @@ console.log(authUser)
             </div>
 
             {/* Search */}
-            <div className='p-2 bg-[#111B21]'>
-                <form onSubmit={searchSubmitHandler} className='flex items-center bg-[#202C33] rounded-lg p-1'>
+            <div className='p-2 '>
+                <form onSubmit={searchSubmitHandler} className='flex items-center bg-bgSecondary rounded-full p-1'>
                     <button type='submit' className='p-2 text-gray-400'>
                         <BiSearchAlt2 className='w-5 h-5' />
                     </button>
                     <input
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        className='bg-transparent text-sm focus:outline-none w-full text-white p-1' type="text"
+                        className='text-sm  focus:outline-none w-full text-white p-1' type="text"
                         placeholder='Search or start new chat'
                     />
                 </form>

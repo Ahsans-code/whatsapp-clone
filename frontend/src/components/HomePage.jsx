@@ -38,7 +38,7 @@ const HomePage = () => {
   }, [authUser, navigate]);
 
   return (
-    <div className='flex items-center justify-center h-screen bg-[#111B21]'>
+    <div className='flex items-center justify-center h-screen bg-blackBg'>
       <div className='flex w-screen h-screen overflow-hidden'>
         <Sidebar />
         <MessageContainer />

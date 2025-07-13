@@ -78,24 +78,24 @@ const SendInput = () => {
     }
 
     return (
-        <div className='bg-[#202C33] p-2 flex items-center gap-4'>
+        <div className='bg-bgSecondary w-[98%] mx-auto mt-2 rounded-full p-3 mb-2 flex items-center gap-5'>
             {/* Icons */}
-            <div className='flex gap-2 text-gray-400'>
-                <BsEmojiSmile size={'24px'} className='cursor-pointer hover:text-gray-200' />
-                <ImAttachment size={'24px'} className='cursor-pointer hover:text-gray-200' />
+            <div className='flex gap-4 text-[#ccc]'>
+                <BsEmojiSmile size={'20px'} className='cursor-pointer hover:text-gray-200' />
+                <ImAttachment size={'20px'} className='cursor-pointer hover:text-gray-200' />
             </div>
 
             {/* Input Form */}
-            <form onSubmit={onSubmitHandler} className='flex-1'>
-                <div className='w-full relative'>
+            <form onSubmit={onSubmitHandler} className='flex-1 '>
+                <div className='w-full relative '>
                     <input
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         type="text"
                         placeholder='Type a message'
-                        className='bg-[#2A3942] border text-sm rounded-lg block w-full p-3 text-white focus:outline-none'
+                        className=' text-sm block w-full  text-white focus:outline-none'
                     />
-                    <button type="submit" className='absolute flex inset-y-0 end-0 items-center pr-4 text-gray-400 hover:text-green-500'>
+                    <button type="submit" className='absolute flex inset-y-0 end-0 items-center px-4 text-gray-400 hover:text-green-500 bg-bgSecondary' >
                         <IoSend size={'24px'} />
                     </button>
                 </div>

@@ -11,7 +11,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+@theme{
+  --color-blackBg:#161717;
+  --color-bgSecondary:#2E2F2F;
+  --color-primary:#144D37;
+  --color-messageBg:#242626;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -20,16 +25,22 @@ code {
 
 ::-webkit-scrollbar {
   /* Customize the scrollbar width */
-  width:6px;
+  padding: 6px;
+  width: 5px;
+
 }
 
 ::-webkit-scrollbar-track {
   /* Customize the scrollbar track */
-  background-color: aliceblue;
+  background-color: transparent;
+
 }
 
 ::-webkit-scrollbar-thumb {
   /* Customize the scrollbar thumb */
-  background: #1b1b1b;
+  background: #A7A8A8;
   border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color: #ccc;
 }

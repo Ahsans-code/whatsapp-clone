@@ -43,12 +43,13 @@ const Message = ({ message }) => {
 
     return (
         <div ref={scroll} className={`flex ${isSender ? 'justify-end' : 'justify-start'} my-2`}>
-            <div className={`p-2 rounded-md max-w-xs md:max-w-md ${isSender ? 'bg-[#005C4B] text-white' : 'bg-[#202C33] text-white'}`}>
+            <div className={`p-2 rounded-md max-w-xs md:max-w-md ${isSender ? 'bg-primary text-white' : 'bg-messageBg text-white '} flex items-end gap-2 overflow-x-auto`}>
                 <p>{message?.message}</p>
-                <span className='text-xs text-gray-400 float-right mt-1'>{messageTime}</span>
+                <span className='text-[10px] text-gray-400 whitespace-nowrap   '>{messageTime}</span>
             </div>
         </div>
     )
 }
+
 
 export default Message;

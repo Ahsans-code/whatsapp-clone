@@ -49,18 +49,21 @@ import SendInput from './SendInput'
 import Messages from './Messages';
 import { useSelector } from "react-redux";
 import { IoChatbubblesSharp } from "react-icons/io5";
+import messageBg from "../../public/messageBg.png"
+
 
 const MessageContainer = () => {
     const { selectedUser, authUser, onlineUsers } = useSelector(store => store.user);
     const isOnline = onlineUsers?.includes(selectedUser?._id);
 
     return (
-        <div className='w-[70%] bg-[#222E35] flex flex-col'>
+        <div className='w-[70%] bg-blackBg bg-blend-overlay  flex flex-col'
+        style={{ backgroundImage: `url(${messageBg})`}}>
             {
                 selectedUser !== null ? (
                     <>
                         {/* Header */}
-                        <div className='flex gap-4 items-center bg-[#202C33] text-white px-4 py-2 h-[60px]'>
+                        <div className='flex gap-4 items-center bg-blackBg text-white px-4 py-2 h-[60px]' >
                             <div className={`avatar ${isOnline ? 'online' : ''}`}>
                                 <div className='w-10 rounded-full'>
                                     <img src={selectedUser?.profilePhoto} alt="user-profile" />

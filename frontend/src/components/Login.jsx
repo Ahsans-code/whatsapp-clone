@@ -40,7 +40,7 @@ const Login = () => {
     return (
         <div className='h-screen w-screen flex flex-col'>
             {/* Top Banner with Logo */}
-            <div className='h-[128px] bg-[#00a884] flex items-center justify-start '>
+            <div className='h-[128px] bg-primary flex items-center justify-start '>
                 <div className='flex items-center gap-4 mx-auto'>
                     <BsWhatsapp size={'32px'} className='text-white' />
                     <h1 className='text-xl font-semibold text-white'>WHATSAPP WEB</h1>
@@ -59,7 +59,7 @@ const Login = () => {
                             <input
                                 value={user.username}
                                 onChange={(e) => setUser({ ...user, username: e.target.value })}
-                                className='w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00a884]'
+                                className='w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary'
                                 type="text"
                                 placeholder='Enter username'
                             />
@@ -71,7 +71,7 @@ const Login = () => {
                             <input
                                 value={user.password}
                                 onChange={(e) => setUser({ ...user, password: e.target.value })}
-                                className='w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00a884]'
+                                className='w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary'
                                 type="password"
                                 placeholder='Enter Password'
                             />
@@ -79,14 +79,14 @@ const Login = () => {
                         <div>
                             <button
                                 type="submit"
-                                className='btn w-full bg-[#00a884] text-white py-3 rounded-md text-lg font-semibold hover:bg-[#008a6b] transition-colors duration-300'
+                                className='btn w-full bg-primary text-white py-3 rounded-md text-lg font-semibold hover:bg-[#008a6b] transition-colors duration-300'
                             >
                                 Login
                             </button>
                         </div>
                         <p className='text-center text-sm text-gray-600'>
                             Don't have an account?{' '}
-                            <Link to="/signup" className='text-[#00a884] font-medium hover:underline'>
+                            <Link to="/signup" className='text-primary font-medium hover:underline'>
                                 Sign Up
                             </Link>
                         </p>
