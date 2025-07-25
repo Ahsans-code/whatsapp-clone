@@ -1,34 +1,35 @@
 // const express = require('express')// method-1
 import express from "express"; // method-2
-import dotenv from "dotenv"; 
+import dotenv from "dotenv";
+dotenv.config();
+
 import connectDB from "./config/database.js";
 import userRoute from "./routes/userRoute.js";
 import messageRoute from "./routes/messageRoute.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { app,server } from "./socket/socket.js";
-dotenv.config({});
+import { app, server } from "./socket/socket.js";
 
- 
-const PORT = process.env.PORT|| 5000;
- 
+
+const PORT = process.env.PORT || 5000;
+
 // middleware
-app.use(express.urlencoded({extended:true}));
-app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(cookieParser());
-const corsOption={
-    origin:['whatsapp-clone-ndo61r27w-ahsans-codes-projects.vercel.app','http://localhost:5173',"https://whatsapp-clone-black-theta.vercel.app"],
-    credentials:true
+const corsOption = {
+    origin: ['whatsapp-clone-ndo61r27w-ahsans-codes-projects.vercel.app', 'http://localhost:5173', "https://whatsapp-clone-black-theta.vercel.app", "http://localhost:5174"],
+    credentials: true
 };
-app.use(cors(corsOption)); 
+app.use(cors(corsOption));
 
 
 // routes
-app.use("/api/v1/user",userRoute); 
-app.use("/api/v1/message",messageRoute);
- 
+app.use("/api/v1/user", userRoute);
+app.use("/api/v1/message", messageRoute);
 
-server.listen(PORT, ()=>{
+
+server.listen(PORT, () => {
     connectDB();
     console.log(`Server listen at prot ${PORT}`);
 });

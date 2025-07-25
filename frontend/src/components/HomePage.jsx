@@ -21,7 +21,7 @@
 // }
 
 // export default HomePage
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
 import MessageContainer from './MessageContainer'
 import { useSelector } from 'react-redux'
@@ -30,7 +30,8 @@ import { useNavigate } from 'react-router-dom'
 const HomePage = () => {
   const { authUser } = useSelector(store => store.user);
   const navigate = useNavigate();
-  
+  const [collapse, setCollapse] = useState(false)
+
   useEffect(() => {
     if (!authUser) {
       navigate("/login");
@@ -40,8 +41,8 @@ const HomePage = () => {
   return (
     <div className='flex items-center justify-center h-screen bg-blackBg'>
       <div className='flex w-screen h-screen overflow-hidden'>
-        <Sidebar />
-        <MessageContainer />
+        <Sidebar collapse={collapse} setCollapse={setCollapse} />
+        <MessageContainer setCollapse={setCollapse} />
       </div>
     </div>
   )

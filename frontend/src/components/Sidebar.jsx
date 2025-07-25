@@ -8,7 +8,7 @@
 // import { setAuthUser, setOtherUsers, setSelectedUser } from '../redux/userSlice';
 // import { setMessages } from '../redux/messageSlice';
 // import { BASE_URL } from '..';
- 
+
 // const Sidebar = () => {
 //     const [search, setSearch] = useState("");
 //     const {otherUsers} = useSelector(store=>store.user);
@@ -63,7 +63,7 @@
 // export default Sidebar
 
 import React, { useState } from 'react'
-import { BiSearchAlt2 } from "react-icons/bi";
+import { BiMenu, BiSearchAlt2 } from "react-icons/bi";
 import OtherUsers from './OtherUsers';
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -73,9 +73,10 @@ import { setAuthUser, setOtherUsers, setSelectedUser } from '../redux/userSlice'
 import { setMessages } from '../redux/messageSlice';
 import { BASE_URL } from '../main';
 import { FiLogOut } from "react-icons/fi";
+import { FaHamburger } from 'react-icons/fa';
 
 
-const Sidebar = () => {
+const Sidebar = ({ setCollapse, collapse }) => {
     const [search, setSearch] = useState("");
     const { otherUsers, authUser } = useSelector(store => store.user);
     const dispatch = useDispatch();
@@ -104,9 +105,9 @@ const Sidebar = () => {
             toast.error("User not found!");
         }
     }
-console.log(authUser)
+    console.log(authUser)
     return (
-        <div className='w-[30%] border-r border-bgSecondary bg-blackBg text-white flex flex-col'>
+        <div className={`${collapse ? "w-0 max-md:-translate-x-full  md:w-[10%]" : " w-1/2 md:w-[30%]"} overflow-hidden max-md:fixed max-md:h-screen border-r border-bgSecondary bg-blackBg text-white flex flex-col z-[9999] transition-all duration-200`}>
             {/* Header */}
             <div className='flex items-center justify-between  h-[60px] p-3'>
                 {/* <div className="avatar">
@@ -114,16 +115,20 @@ console.log(authUser)
                         <img src={authUser?.profilePhoto} alt="user-profile" />
                     </div>
                 </div> */}
-                <h2 className='text-xl font-semibold'>WhatsApp</h2>
+                {!collapse && <h2 className='text-xl font-semibold max-md:hidden'>WhatsApp</h2>}
                 <div className='flex items-center'>
+
                     <button onClick={logoutHandler} className='p-2 rounded-full hover:bg-[#374248]'>
                         <FiLogOut className='w-6 h-6' title='Logout' />
                     </button>
                 </div>
+                <button className='md:hidden' onClick={() => setCollapse(!collapse)}>
+                    <BiMenu size={21} />
+                </button>
             </div>
 
             {/* Search */}
-            <div className='p-2 '>
+            {!collapse && <div className='p-2 '>
                 <form onSubmit={searchSubmitHandler} className='flex items-center bg-bgSecondary rounded-full p-1'>
                     <button type='submit' className='p-2 text-gray-400'>
                         <BiSearchAlt2 className='w-5 h-5' />
@@ -132,13 +137,13 @@ console.log(authUser)
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         className='text-sm  focus:outline-none w-full text-white p-1' type="text"
-                        placeholder='Search or start new chat'
+                        placeholder='Search'
                     />
                 </form>
-            </div>
+            </div>}
             <div className="divider px-3 my-0"></div>
             {/* Other Users */}
-            <OtherUsers />
+            <OtherUsers collapse={collapse} />
         </div>
     )
 }
