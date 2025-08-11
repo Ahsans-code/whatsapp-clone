@@ -71,7 +71,7 @@ const MessageContainer = ({ setCollapse }) => {
                             </button>
                             <div className={`avatar ${isOnline ? 'online' : ''}`}>
                                 <div className='w-10 rounded-full'>
-                                    <img src={selectedUser?.profilePhoto} alt="user-profile" />
+                                    <img className='rounded-full object-cover' src={selectedUser?.profilePhoto} alt="user-profile" />
                                 </div>
                             </div>
                             <div className='flex flex-col'>
