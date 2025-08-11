@@ -1,6 +1,7 @@
 import { User } from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { GEMINI_BOT_USERNAME } from "../index.js";
 
 export const register = async (req, res) => {
     try {
@@ -63,8 +64,10 @@ export const login = async (req, res) => {
 
         const token = await jwt.sign(tokenData, process.env.JWT_SECRET_KEY, { expiresIn: '1d' });
 
-        return res.status(200).cookie("token", token, { maxAge: 1 * 24 * 60 * 60 * 1000, 
-            httpOnly: true, sameSite: 'none',secure:"true" }).json({
+        return res.status(200).cookie("token", token, {
+            maxAge: 1 * 24 * 60 * 60 * 1000,
+            httpOnly: true, sameSite: 'none', secure: "true"
+        }).json({
             _id: user._id,
             username: user.username,
             fullName: user.fullName,
@@ -87,9 +90,21 @@ export const logout = (req, res) => {
 export const getOtherUsers = async (req, res) => {
     try {
         const loggedInUserId = req.id;
-        const otherUsers = await User.find({ _id: { $ne: loggedInUserId } }).select("-password");
-        return res.status(200).json(otherUsers);
+
+        // 1. Find the Gemini bot user specifically
+        const botUser = await User.findOne({ username: GEMINI_BOT_USERNAME }).select("-password");
+
+        // 2. Find all other users, excluding the logged-in user AND the bot
+        const otherUsers = await User.find({
+            _id: { $nin: [loggedInUserId, botUser?._id] } // $nin means "not in"
+        }).select("-password");
+
+        // 3. Combine the lists, with the bot at the top (if it exists)
+        const finalUserList = botUser ? [botUser, ...otherUsers] : otherUsers;
+
+        return res.status(200).json(finalUserList);
     } catch (error) {
-        console.log(error);
+        console.log("Error in getOtherUsers:", error);
+        res.status(500).json({ error: "Internal server error" });
     }
 }

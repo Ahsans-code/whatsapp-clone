@@ -23,7 +23,7 @@ const OtherUser = ({ user, collapse }) => {
                 className={`flex gap-3 my-2 justify-center items-center p-3 cursor-pointer hover:bg-bgSecondary rounded-lg ${isSelected ? 'bg-bgSecondary' : 'text-white'}`}>
                 <div className={`avatar ${isOnline ? 'online' : ''}`}>
                     <div className='w-9 rounded-full'>
-                        <img src={user?.profilePhoto} alt="user-profile" />
+                        <img className='rounded-full object-cover' src={user?.profilePhoto} alt="user-profile" />
                     </div>
                 </div>
                 {!collapse && <div className='flex flex-col flex-1'>
